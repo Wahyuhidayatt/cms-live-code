@@ -30,5 +30,18 @@ methods.create = function (req,res,next) {
     }
   })
 }
+methods.getAll = function (req, res, next) {
+  Article.find({})
+   .populate('_author')
+   .exec(function(err, article) {
+     if(err){
+       res.json(err)
+     }else{
+       res.json({
+         data : article
+       })
+     }
+   })
+}
 
 module.exports = methods

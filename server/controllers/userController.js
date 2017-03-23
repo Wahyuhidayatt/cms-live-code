@@ -33,8 +33,6 @@ methods.update = function(req, res, next) {
 }
 methods.delete = function(req, res) {
   User.findByIdAndRemove(req.params._id, function (err, userData) {
-    // We'll create a simple object to send back with a message and the id of the document that was removed
-    // You can really do this however you want, though.
     var response = {
         message: "successfully deleted",
         id : userData._id
