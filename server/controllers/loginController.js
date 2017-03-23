@@ -35,20 +35,26 @@ var Users = {
             console.log(err);
         })
     },
-    register: function(req, res, next) {
-        var register = new modelsUsers({
-            name: req.body.name,
-            email: req.body.email,
-            password: passwordHash.generate(req.body.password),
-            articles : []
-        })
-        register.save(function(err, result) {
-            if (err) {
-                res.send(err)
-            } else {
-                res.send(result)
-            }
-        })
+    register: function (req,res,next) {
+      let user = {
+        username : req.body.username,
+        email : req.body.email,
+        password : passwordHash.generate(req.body.password),
+        articles : []
+      }
+
+      User.create(user, function (err, response) {
+        console.log(response);
+        if(err){
+          res.send({
+            msg : "something went wrong"
+          })
+        }else{
+          res.send({
+            msg : "user created"
+          })
+        }
+      })
     },
 
     decode: function(req, res, next) {

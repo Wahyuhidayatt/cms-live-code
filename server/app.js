@@ -13,7 +13,7 @@ var app = express();
 app.use(cors());
 app.use(logger('dev'))
 mongoose.promise = global.promise
-mongoose.connect('mongodb://localhost/isinamadatabasenya');
+mongoose.connect('mongodb://localhost/livewahyu');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
