@@ -1,31 +1,10 @@
 'use strict'
 
 var express = require('express');
-var router = express.Router()
-var User = require('../models/user')
+var router = express.Router();
+var User = require('../models/user');
+var passwordHash = require('password-hash');
 let methods = {}
-
-// methods.create = function (req,res,next) {
-//   let user = {
-//     username : req.body.username,
-//     email : req.body.email,
-//     password : req.body.password,
-//     articles : []
-//   }
-//
-//   User.create(user, function (err, response) {
-//     console.log(response);
-//     if(err){
-//       res.send({
-//         msg : "something went wrong"
-//       })
-//     }else{
-//       res.send({
-//         msg : "user created"
-//       })
-//     }
-//   })
-// }
 
 methods.getAllUsers = function (req,res,next) {
   User.find({})
@@ -40,5 +19,38 @@ methods.getAllUsers = function (req,res,next) {
     }
   })
 }
+methods.update = function(req, res, next) {
+    User.findById(req.params.id, function(err, result) {
+        if (err) res.send(err)
+        else {
+            result.username = req.body.username,
+            result.email = req.body.email,
+            result.password = passwordHash.generate(req.body.password),
+            result.save(),
+            res.send(result)
+        }
+    })
+}
+methods.delete = function(req, res) {
+  User.findByIdAndRemove(req.params._id, function (err, userData) {
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    var response = {
+        message: "successfully deleted",
+        id : userData._id
+    };
+    res.send(response);
+  });
+}
+methods.getOne = function (req, res, next) {
+  User.find({
+    _id: req.params.id
+  })
+    .populate('articles')
+    .then(function (user) {
+      res.send(user)
+    })
+}
+
 
 module.exports = methods

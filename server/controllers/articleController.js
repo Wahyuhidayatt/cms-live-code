@@ -21,7 +21,7 @@ methods.create = function (req,res,next) {
           if (err) {
             res.json(err)
           }else{
-            res.json({data: data})
+            // res.json({data: data})
           }
       })
       res.json({

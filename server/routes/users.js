@@ -11,11 +11,10 @@ router.post('/register',Controller.register);
 router.post('/login',Controller.login);
 router.post('/decode',DataUsers.decode);
 
-
-
-
-// router.post('/', Controller.);
 router.get('/', userController.getAllUsers);
+router.get('/:id', userController.getOne)
+router.put('/:id', userController.update);
+router.delete('/:_id', userController.delete)
 
 
 module.exports = router
