@@ -43,7 +43,7 @@ var Users = {
         articles : []
       }
 
-      User.create(user, function (err, response) {
+      modelsUsers.create(user, function (err, response) {
         console.log(response);
         if(err){
           res.send({
