@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 
 let articleSchema = Schema({
   title : String,
-  content : String
+  content : String,
+  _author : {type : Schema.Types.ObjectId, ref : 'Users'}
 },{
   timestamps : true
 })
