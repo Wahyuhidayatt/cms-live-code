@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="http://icons.iconarchive.com/icons/fps.hu/free-christmas-flat-circle/512/home-icon.png" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <title>Live coding</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/semantic.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./css/sweetalert.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+<body>
+    <div id="app" class="ui container">
+        <nav id="navigation-bar" class="navbar navbar-default">
+            <ul id="navigation-links">
+                <li><a id="logo" href="/">live-coding</a></li>
+                <li><a onclick="showData()" href="#">Articles</a></li>
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="circular search link icon"></i>
+                </div>
+                <li id="register" class="navbar-right"><a href="/register.html">Sign up</a></li>
+                <li id="login" class="navbar-right"><a href="/login.html">Login</a></li>
+            </ul>
+        </nav>
+        <div id=listData>
+
+        </div>
+
+
+
+
+    </div>
+
+
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script type="text/javascript" src="./js/vueconnect.js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7HolcV3Hn1mv9TooZPPiUypoZj3SIods"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+    <script>
+        $(function() {
+            $("#listtodo").sortable();
+            $("#listtodo").disableSelection();
+        });
+    </script>
+
+    <script>
+    $(function() {
+      $( "#datepicker" ).datepicker();
+    });
+    $(function() {
+        $("#datepickerSearch").datepicker();
+    });
+    $(function() {
+      $( "#datepickerUpdate" ).datepicker();
+    });
+    </script>
+    <script type="text/javascript" src="./js/semantic.min.js"></script>
+    <script type="text/javascript" src="./js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./helpers/date.js"></script>
+
+</body>
+
+</html>
