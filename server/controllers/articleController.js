@@ -43,5 +43,37 @@ methods.getAll = function (req, res, next) {
      }
    })
 }
+methods.update = function(req, res, next) {
+    Article.findById(req.params.id, function(err, result) {
+        if (err) res.send(err)
+        else {
+            result.title = req.body.title,
+            result.content = req.body.content,
+            result._author = req.body._author
+            result.save(),
+            res.send(result)
+        }
+    })
+}
+methods.getOne = function (req, res, next) {
+  Article.find({
+    _id: req.params.id
+  })
+    // .populate('_author')
+    .then(function (articles) {
+      res.json({
+        data : articles
+      })
+    })
+}
+methods.delete = function(req, res) {
+  Article.findByIdAndRemove(req.params._id, function (err, articleData) {
+    var response = {
+        message: "successfully deleted",
+        id : articleData._id
+    };
+    res.send(response);
+  });
+}
 
 module.exports = methods
